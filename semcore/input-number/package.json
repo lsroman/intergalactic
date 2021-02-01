@@ -1,14 +1,14 @@
 {
   "name": "@semcore/input-number",
   "description": "SEMRush InputNumber Component",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {

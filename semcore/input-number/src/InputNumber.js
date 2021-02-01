@@ -1,51 +1,10 @@
-import React, { HTMLAttributes, InputHTMLAttributes } from 'react';
-import createComponent, { Component, Merge, PropGetter, styled } from '@semcore/core';
-import BUTTONS from './buttons';
-import Input, { IInputAddonProps, IInputProps, IInputValueProps } from '@semcore/input';
+import React from 'react';
+import createComponent, { Component, styled } from '@semcore/core';
+import Input from '@semcore/input';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import BUTTONS from './buttons';
 
 import style from './style/input-number.shadow.css';
-
-export type InputNumberValue = string | number | null;
-export type InputNumberSize = 'm' | 'l' | 'xl';
-
-export interface IInputNumberProps extends IInputProps {
-  /** Input size
-   * @default m
-   * */
-  size?: InputNumberSize;
-}
-
-export interface IInputNumberValueProps extends IInputValueProps {
-  /** Minimum value
-   * @default Number.MIN_SAFE_INTEGER
-   */
-  min?: number;
-  /** Maximum value
-   * @default Number.MAX_SAFE_INTEGER
-   */
-  max?: number;
-  /** Value change step
-   * @default 1
-   */
-  step?: number;
-  /** Numeric value */
-  value?: InputNumberValue;
-  /** Called when the input value changes, it returns its current value in numeric format */
-  onChange?: (value: InputNumberValue, event?: React.SyntheticEvent<HTMLInputElement>) => void;
-}
-
-export interface IInputNumberControlsProps extends IInputAddonProps {
-  /** Always displays controls (steppers)
-   * @default false
-   */
-  showControls?: boolean;
-}
-
-export interface IInputNumberContext extends IInputNumberProps {
-  getValueProps: PropGetter<InputNumber['getValueProps']>;
-  getControlsProps: PropGetter<InputNumber['getControlsProps']>;
-}
 
 function floatOrDefault(value, def = 0) {
   const number = Number.parseFloat(value);
@@ -77,7 +36,7 @@ function parseValueWithMinMax(max, min, value) {
 const IconUp = ({ size }) => BUTTONS.up[size] || BUTTONS.up['m'];
 const IconDown = ({ size }) => BUTTONS.down[size] || BUTTONS.down['m'];
 
-class InputNumber extends Component<IInputNumberProps> {
+class InputNumber extends Component {
   static displayName = 'InputNumber';
   static style = style;
   static defaultProps = {
@@ -119,7 +78,7 @@ class InputNumber extends Component<IInputNumberProps> {
   }
 }
 
-class Value extends Component<IInputNumberValueProps> {
+class Value extends Component {
   static defaultProps = {
     defaultValue: '',
     min: Number.MIN_SAFE_INTEGER,
@@ -134,7 +93,7 @@ class Value extends Component<IInputNumberValueProps> {
 
   uncontrolledProps() {
     return {
-      value: (value) => value,
+      value: null,
     };
   }
 
@@ -274,22 +233,10 @@ function Controls(props) {
 
   return styled(styles)(
     <SControls render={Input.Addon} size={size} showControls={showControls}>
-      <SUp
-        onClick={inc}
-        tabIndex={-1}
-        type="button"
-        // @ts-ignore
-        size={size}
-      >
+      <SUp onClick={inc} tabIndex={-1} type="button" size={size}>
         <IconUp size={size} />
       </SUp>
-      <SDown
-        onClick={dec}
-        tabIndex={-1}
-        type="button"
-        // @ts-ignore
-        size={size}
-      >
+      <SDown onClick={dec} tabIndex={-1} type="button" size={size}>
         <IconDown size={size} />
       </SDown>
       <Children />
@@ -297,15 +244,7 @@ function Controls(props) {
   );
 }
 
-export default createComponent<
-  Merge<IInputNumberProps, HTMLAttributes<HTMLDivElement>>,
-  {
-    Value: Merge<IInputNumberValueProps, InputHTMLAttributes<HTMLSpanElement>>;
-    Controls: Merge<IInputNumberControlsProps, HTMLAttributes<HTMLSpanElement>>;
-    Addon: Merge<IInputAddonProps, HTMLAttributes<HTMLSpanElement>>;
-  },
-  IInputNumberContext
->(InputNumber, {
+export default createComponent(InputNumber, {
   Value,
   Controls,
   Addon: Input.Addon,
