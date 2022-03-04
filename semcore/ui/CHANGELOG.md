@@ -1,17 +1,49 @@
+## [11.0.1] - 2022-03-04
+
+### @semcore/base-trigger
+
+- **Fixed** Improved keyboard focus styles.
+
+### @semcore/flags
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/skeleton
+
+- **Fixed** Fixed `viewBox` for `BarChartSkeleton`.
+
+### @semcore/spin
+
+- **Changed** Rewrite the component to svg
+- **Added** Added roundings
+
+### @semcore/super-publisher
+
+- **Changed** Rewritten to typescript.
+
 ## [11.0.0] - 2022-02-25
 
 ### Global
 
 - **Added** Added repository field to package.json file.
 
-### @semcore/base-trigger
+### @semcore/slider
 
-- **Fixed** Fixed LinkTrigger hovered text color.
+- **BREAK** Remove props background/color/interaction, use theme instead.
+- **BREAK** Refactoring component to handle extreme values.
 
 ### @semcore/card
 
 - **BREAK** Card was divided into Header and Body
 - **Added** Background was added
+
+### @semcore/spin-container
+
+- **BREAK** Add new children component SpinContainer.Content when using advanced mode along with SpinContainer.Overlay.
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed LinkTrigger hovered text color.
 
 ### @semcore/d3-chart
 
@@ -21,6 +53,10 @@
 
 - **Fixed** Fixed explicit default theme
 
+### @semcore/errors
+
+- **Fixed** Fixed Static files were missing in release 10.2.0
+
 ### @semcore/flex-box
 
 - **Added** Added gap, rowGap and columnGap css properties support for Flex component.
@@ -29,19 +65,12 @@
 
 - **Fixed** Fixed sizes for a few icons.
 - **Fixed** Fixed color setting for LightningFilled, MailOpenFilled.
+- **Added** Added icon Hubspot.
+- **Changed** Changed svg for SortAsc, SortDesc.
 
 ### @semcore/skeleton
 
 - **Fixed** Added export type for Bubble, ScatterPlot, Venn charts
-
-### @semcore/slider
-
-- **BREAK** Remove props background/color/interaction, use theme instead.
-- **BREAK** Refactoring component to handle extreme values.
-
-### @semcore/spin-container
-
-- **BREAK** Add new children component SpinContainer.Content when using advanced mode along with SpinContainer.Overlay.
 
 ### @semcore/switch
 
@@ -66,15 +95,6 @@
 ### @semcore/typography
 
 - **Fixed** Remove css specificity for props lineHeight/fontSize for Text.
-
-### @semcore/errors
-
-- **Fixed** Fixed Static files were missing in release 10.2.0
-
-### @semcore/icon
-
-- **Added** Added icon Hubspot.
-- **Changed** Changed svg for SortAsc, SortDesc.
 
 ### @semcore/widget-empty
 
