@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - unrelease
+
+### Added
+
+- Added property for cli command, `--tasks`.
+
 ## [1.0.0] - 2022-02-28
 
 ### Changed
